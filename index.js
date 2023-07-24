@@ -1,10 +1,22 @@
 const container = document.querySelector('.container');
-const search = document.querySelector('.search-box button');
+const searchButton = document.querySelector('.search-box button');
+const searchBox = document.querySelector('.search-box');
 const weatherBox = document.querySelector('.weather-box');
 const weatherDetails = document.querySelector('.weather-details');
 const error404 = document.querySelector('.not-found');
 
-search.addEventListener('click', () => {
+//search when search button is clicked
+searchButton.addEventListener('click',  callApi);
+
+//search when enter is pressed
+searchBox.addEventListener('keypress', e => {
+    if(e.key === 'Enter') {
+        callApi();
+    }
+});
+
+//called when one of the (2) events is triggered
+function callApi() {
 
     const APIKey = '7e930576a7d7f30730568180b1719c5e';
     const city = document.querySelector('.search-box input').value;
@@ -72,6 +84,5 @@ search.addEventListener('click', () => {
 
 
         });
-
-
-});
+    
+}
